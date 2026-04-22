@@ -1,0 +1,81 @@
+================================================================================
+TASK 6: Verify Forked Repository
+================================================================================
+
+CURL COMMAND:
+curl -s https://api.github.com/repos/YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub | jq '.name, .fork, .owner.login, .parent.full_name'
+
+================================================================================
+EXAMPLE CURL COMMAND OUTPUT (After you fork the repository):
+================================================================================
+
+"mcino-Introduction-to-Git-and-GitHub"
+true
+YOUR_USERNAME
+"ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+
+================================================================================
+INSTRUCTIONS FOR TASK 6:
+================================================================================
+
+Step 1: Fork the repository
+   - Visit: https://github.com/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub
+   - Click the "Fork" button in the top-right corner
+   - Wait for the fork to complete
+
+Step 2: Get your GitHub username
+   - Go to https://github.com (ensure you're logged in)
+   - Click on your profile icon
+   - Your username will be visible
+
+Step 3: Run the curl command
+   Replace YOUR_USERNAME with your actual GitHub username:
+   
+   curl -s https://api.github.com/repos/YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub | jq '.name, .fork, .owner.login, .parent.full_name'
+
+Step 4: Expected output
+   The command should return:
+   - Repository name: "mcino-Introduction-to-Git-and-GitHub"
+   - Fork status: true (indicates it is a fork)
+   - Owner: YOUR_USERNAME
+   - Parent repository: "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+
+Step 5: Alternative curl command (if jq is not installed)
+   curl -s https://api.github.com/repos/YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub | grep -E '"name"|"fork"|"login"|"full_name"'
+
+================================================================================
+DETAILED EXAMPLE (Replace YOUR_USERNAME with your actual username):
+================================================================================
+
+Command:
+$ curl -s https://api.github.com/repos/johnsmith/mcino-Introduction-to-Git-and-GitHub | jq '.name, .fork, .owner.login, .parent.full_name'
+
+Output:
+"mcino-Introduction-to-Git-and-GitHub"
+true
+johnsmith
+"ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+
+================================================================================
+WHAT THE OUTPUT MEANS:
+================================================================================
+
+- "mcino-Introduction-to-Git-and-GitHub" = Repository name
+- true = Confirms this is a forked repository
+- johnsmith = Your GitHub username (repository owner)
+- "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub" = Original/parent repository
+
+This proves that your repository was successfully forked from the 
+ibm-developer-skills-network repository!
+
+================================================================================
+NOTES:
+================================================================================
+
+1. You need to have forked the repository first before running the curl command
+2. Replace YOUR_USERNAME with your actual GitHub username
+3. You need either 'jq' or 'grep' installed on your system
+4. The GitHub API may require authentication for higher rate limits
+5. For authentication, add: -H "Authorization: token YOUR_GITHUB_TOKEN"
+
+================================================================================
