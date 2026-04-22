@@ -1,0 +1,234 @@
+================================================================================
+TASK 8: Pull Request Verification - Terminal Output
+================================================================================
+
+CURL COMMAND:
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {title: .title, state: .state, head: {ref: .head.ref, repo: .head.repo.full_name}, base: {ref: .base.ref, repo: .base.repo.full_name}}'
+
+================================================================================
+EXAMPLE CURL COMMAND OUTPUT (After you create a Pull Request):
+================================================================================
+
+{
+  "title": "Fix: Correct typo in README.md",
+  "state": "open",
+  "head": {
+    "ref": "bug-fix-typo",
+    "repo": "YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub"
+  },
+  "base": {
+    "ref": "main",
+    "repo": "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+  }
+}
+
+================================================================================
+ALTERNATIVE CURL COMMAND (without jq):
+================================================================================
+
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | grep -E '"title"|"state"|"ref"|"full_name"'
+
+================================================================================
+EXAMPLE OUTPUT (Alternative format):
+================================================================================
+
+"title": "Fix: Correct typo in README.md",
+"state": "open",
+"ref": "bug-fix-typo",
+"full_name": "YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub",
+"ref": "main",
+"full_name": "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+
+================================================================================
+INSTRUCTIONS FOR TASK 8:
+================================================================================
+
+Step 1: Ensure you have pushed your bug-fix-typo branch
+   $ git push origin bug-fix-typo
+
+Step 2: Create a Pull Request on GitHub
+   - Go to: https://github.com/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub
+   - You should see a notification to create a pull request
+   - OR go to the "Pull requests" tab and click "New pull request"
+   - Select:
+     * Base repository: ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub
+     * Base branch: main
+     * Head repository: YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub
+     * Compare branch: bug-fix-typo
+   - Click "Create pull request"
+   - Add a title like "Fix: Correct typo in README.md"
+   - Click "Create pull request" button
+
+Step 3: Run the curl command
+   curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {title: .title, state: .state, head: {ref: .head.ref, repo: .head.repo.full_name}, base: {ref: .base.ref, repo: .base.repo.full_name}}'
+
+Step 4: Expected output
+   The command should return:
+   - Pull request title
+   - Pull request state (open, closed, merged)
+   - Head branch: bug-fix-typo
+   - Head repository: YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub (your fork)
+   - Base branch: main
+   - Base repository: ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub (original repo)
+
+Step 5: Copy the command and output
+   Save both to the bug-fix-revert file
+
+================================================================================
+DETAILED EXAMPLE (Replace YOUR_USERNAME with your actual username):
+================================================================================
+
+Command:
+$ curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {title: .title, state: .state, head: {ref: .head.ref, repo: .head.repo.full_name}, base: {ref: .base.ref, repo: .base.repo.full_name}}'
+
+Output:
+{
+  "title": "Fix: Correct typo in README.md",
+  "state": "open",
+  "head": {
+    "ref": "bug-fix-typo",
+    "repo": "johnsmith/mcino-Introduction-to-Git-and-GitHub"
+  },
+  "base": {
+    "ref": "main",
+    "repo": "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+  }
+}
+
+================================================================================
+WHAT THE OUTPUT MEANS:
+================================================================================
+
+"title": "Fix: Correct typo in README.md"
+   - The title of your pull request
+
+"state": "open"
+   - The state of the pull request (can be "open", "closed", or "merged")
+
+"head": {
+  "ref": "bug-fix-typo",
+  - The branch name from which the PR is created (your feature branch)
+  
+  "repo": "johnsmith/mcino-Introduction-to-Git-and-GitHub"
+  - The forked repository from which the PR was created (YOUR_USERNAME/repo)
+}
+
+"base": {
+  "ref": "main",
+  - The branch you're merging into (main branch)
+  
+  "repo": "ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub"
+  - The original repository you're submitting the PR to
+}
+
+This proves:
+✓ Your pull request is valid and open
+✓ It shows your forked repository (head.repo)
+✓ It shows the original repository (base.repo)
+✓ It confirms the branch being merged (bug-fix-typo)
+✓ It confirms the target branch (main)
+
+================================================================================
+ALTERNATIVE SIMPLE CURL COMMAND:
+================================================================================
+
+If you want to see all pull request details:
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls
+
+This will return complete PR information in JSON format.
+
+To filter for specific information:
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | grep -E '"title"|"state"'
+
+================================================================================
+STEP-BY-STEP TO CREATE AND VERIFY PR:
+================================================================================
+
+1. Push your branch:
+   $ git push origin bug-fix-typo
+
+2. Go to GitHub and create a PR:
+   https://github.com/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub
+
+3. Wait for the "Compare & pull request" button to appear
+   (or go to Pull requests tab and click "New pull request")
+
+4. Configure the PR:
+   - Base repository: ibm-developer-skills-network/...
+   - Base branch: main
+   - Head repository: YOUR_USERNAME/...
+   - Compare branch: bug-fix-typo
+
+5. Add PR title and description:
+   Title: "Fix: Correct typo in README.md"
+   Description: "This PR fixes a typo in the README.md file"
+
+6. Click "Create pull request"
+
+7. Run the curl command:
+   curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {title: .title, state: .state, head: {ref: .head.ref, repo: .head.repo.full_name}, base: {ref: .base.ref, repo: .base.repo.full_name}}'
+
+8. Copy the command and output to bug-fix-revert file
+
+================================================================================
+TROUBLESHOOTING:
+================================================================================
+
+If curl returns empty []:
+   - No pull requests exist
+   - Make sure you created the PR on GitHub
+   - Check that you pushed your bug-fix-typo branch
+   - Wait a few moments for GitHub to process the PR
+
+If you see "Not Found" error:
+   - Check the repository URL is correct
+   - Verify the repository is public
+   - Check your GitHub username is correct
+
+If jq command not found:
+   - Install jq: brew install jq (Mac) or apt-get install jq (Linux)
+   - Or use the alternative grep command without jq
+
+If curl returns authentication error:
+   - Add GitHub token: curl -H "Authorization: token YOUR_TOKEN" ...
+   - Or use the public endpoint without authentication
+
+================================================================================
+VERIFICATION CHECKLIST:
+================================================================================
+
+✓ Bug-fix-typo branch pushed to your fork
+✓ Pull request created on GitHub
+✓ PR shows as "open" state
+✓ Head repository is your fork: YOUR_USERNAME/mcino-...
+✓ Base repository is the original: ibm-developer-skills-network/mcino-...
+✓ Head branch is: bug-fix-typo
+✓ Base branch is: main
+✓ curl command returns valid JSON response
+
+================================================================================
+ADDITIONAL USEFUL CURL COMMANDS:
+================================================================================
+
+Get only PR numbers and titles:
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {number: .number, title: .title}'
+
+Get PR with review status:
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls | jq '.[] | {title: .title, state: .state, reviews: .review_comments_url}'
+
+Get specific PR by number (e.g., PR #1):
+curl -s https://api.github.com/repos/ibm-developer-skills-network/mcino-Introduction-to-Git-and-GitHub/pulls/1 | jq '{title: .title, state: .state, head: {ref: .head.ref, repo: .head.repo.full_name}}'
+
+================================================================================
+NOTES:
+================================================================================
+
+1. The GitHub API returns pull requests in JSON format
+2. Multiple PRs will return as an array [...]
+3. Each PR object contains detailed information
+4. The "head" object points to your forked repository
+5. The "base" object points to the original repository
+6. This is public information and doesn't require authentication
+7. For rate limiting, you can authenticate with a GitHub token
+
+================================================================================
