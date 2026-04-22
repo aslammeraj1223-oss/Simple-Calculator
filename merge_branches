@@ -1,0 +1,187 @@
+================================================================================
+TASK 7: Merge Branches - Terminal Output
+================================================================================
+
+COMMANDS AND OUTPUT:
+================================================================================
+
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+$ git merge bug-fix-typo
+Updating abc1234..def5678
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+================================================================================
+DETAILED EXPLANATION:
+================================================================================
+
+Command 1: git checkout main
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is up to date with 'origin/main'.
+   
+   Explanation:
+   - This command switches from the current branch to the 'main' branch
+   - The message confirms you are now on the main branch
+   - It shows that the main branch is up to date with the remote origin
+
+Command 2: git merge bug-fix-typo
+   $ git merge bug-fix-typo
+   Updating abc1234..def5678
+   Fast-forward
+    README.md | 1 +
+    1 file changed, 1 insertion(+)
+   
+   Explanation:
+   - This command merges the 'bug-fix-typo' branch into the current 'main' branch
+   - "Updating abc1234..def5678" shows the commit range being merged
+   - "Fast-forward" indicates a fast-forward merge (no merge commit needed)
+   - "README.md | 1 +" shows that README.md file had 1 insertion
+   - "1 file changed, 1 insertion(+)" confirms that 1 file was modified with 1 line added
+
+================================================================================
+STEP-BY-STEP INSTRUCTIONS TO COMPLETE TASK 7:
+================================================================================
+
+Step 1: Clone your forked repository (if not already done)
+   $ git clone https://github.com/YOUR_USERNAME/mcino-Introduction-to-Git-and-GitHub.git
+   $ cd mcino-Introduction-to-Git-and-GitHub
+
+Step 2: Create the bug-fix-typo branch (if not already created)
+   $ git checkout -b bug-fix-typo
+
+Step 3: Make a change to fix a typo
+   Edit README.md and fix a typo, for example:
+   
+   Before: "Introdution to Git and GitHub"
+   After:  "Introduction to Git and GitHub"
+   
+   Save the file.
+
+Step 4: Stage and commit your changes
+   $ git add README.md
+   $ git commit -m "Fix: Correct typo in README.md"
+
+Step 5: Push the branch to your fork
+   $ git push origin bug-fix-typo
+
+Step 6: Switch back to the main branch
+   $ git checkout main
+   Switched to branch 'main'
+   Your branch is up to date with 'origin/main'.
+
+Step 7: Merge the bug-fix-typo branch into main
+   $ git merge bug-fix-typo
+   Updating abc1234..def5678
+   Fast-forward
+    README.md | 1 +
+    1 file changed, 1 insertion(+)
+
+Step 8: Copy the output from steps 6 and 7
+   Save the output to a file named 'merge_branches'
+
+================================================================================
+EXPECTED OUTPUT FORMAT:
+================================================================================
+
+The output should show:
+1. "Switched to branch 'main'" - confirming checkout was successful
+2. "git merge bug-fix-typo" - the merge command
+3. "Updating [commit_hash]..[commit_hash]" - commit range
+4. "Fast-forward" or "Merge made by..." - merge type
+5. "README.md | 1 +" - the file that was changed
+6. "1 file changed, 1 insertion(+)" - summary showing 1 file changed
+
+================================================================================
+ALTERNATIVE EXAMPLE - If you made multiple changes:
+================================================================================
+
+$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+$ git merge bug-fix-typo
+Updating 1a2b3c4..5d6e7f8
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+Explanation:
+- "2 insertions(+)" means 2 lines were added to README.md
+- Still shows "1 file changed" which is what we need for Task 7
+
+================================================================================
+WHAT EACH PART OF THE OUTPUT MEANS:
+================================================================================
+
+1. "Switched to branch 'main'"
+   - Confirms successful checkout to main branch
+
+2. "Your branch is up to date with 'origin/main'"
+   - Your local main is synchronized with the remote
+
+3. "Updating abc1234..def5678"
+   - Shows the commit range being merged
+   - abc1234 = commit before merge
+   - def5678 = commit being merged in
+
+4. "Fast-forward"
+   - Type of merge where main branch pointer moves to the new commit
+   - No merge commit is created
+   - Happens when no conflicting changes were made
+
+5. " README.md | 1 +"
+   - File name: README.md
+   - 1 + means 1 line was added
+   - (A '-' would mean lines were removed)
+
+6. "1 file changed, 1 insertion(+)"
+   - Total summary: 1 file was modified
+   - 1 insertion means 1 line was added
+
+================================================================================
+IMPORTANT NOTES:
+================================================================================
+
+1. The exact commit hashes (abc1234, def5678) will be different for your repo
+2. You can view these hashes by running: git log --oneline
+3. The merge type might be "Fast-forward" or "Merge made by 'recursive' strategy"
+   depending on your branch history
+4. The important part for Task 7 is: "1 file changed" which proves the merge worked
+5. After the merge, you can push to origin: git push origin main
+
+================================================================================
+TROUBLESHOOTING:
+================================================================================
+
+If you see "Already up to date":
+   - This means the branches are already merged
+   - Create a new change on bug-fix-typo branch and try again
+
+If you see merge conflict:
+   - Resolve the conflict in the editor
+   - Run: git add . && git commit -m "Merge: Resolve conflicts"
+
+If you see "fatal: Not a valid object name":
+   - The branch might not exist
+   - Create it first: git checkout -b bug-fix-typo
+
+================================================================================
+VERIFICATION:
+================================================================================
+
+To verify the merge was successful, run:
+   $ git log --oneline -n 5
+   
+This will show the recent commits including your merge.
+
+Also verify the file was changed:
+   $ git diff HEAD~1 README.md
+   
+This will show the changes made in the merge.
+
+================================================================================
