@@ -1,0 +1,347 @@
+================================================================================
+TASK 9: Display Branch Names and Status - Terminal Output
+================================================================================
+
+COMMAND:
+git branch -a
+
+================================================================================
+EXAMPLE TERMINAL OUTPUT:
+================================================================================
+
+* main
+  bug-fix-typo
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/bug-fix-typo
+  remotes/origin/main
+
+================================================================================
+ALTERNATIVE COMMANDS TO DISPLAY BRANCHES:
+================================================================================
+
+Command 1: Show all branches (local and remote)
+   $ git branch -a
+
+Command 2: Show only local branches
+   $ git branch
+
+Command 3: Show only remote branches
+   $ git branch -r
+
+Command 4: Show branches with more detailed information
+   $ git branch -vv
+
+Command 5: Show branches with last commit info
+   $ git branch -v
+
+================================================================================
+DETAILED EXPLANATION OF OUTPUT:
+================================================================================
+
+* main
+   - The asterisk (*) indicates this is the currently checked out branch
+   - "main" is your primary/default branch
+
+bug-fix-typo
+   - A local branch (no asterisk, so it's not currently checked out)
+   - This is the feature branch you created earlier
+
+remotes/origin/HEAD -> origin/main
+   - Points to the default branch on the remote repository
+   - Shows that the remote default is the main branch
+
+remotes/origin/bug-fix-typo
+   - Remote tracking branch for bug-fix-typo
+   - Shows that bug-fix-typo branch exists on the remote (GitHub)
+
+remotes/origin/main
+   - Remote tracking branch for main
+   - Shows that main branch exists on the remote (GitHub)
+
+================================================================================
+STEP-BY-STEP INSTRUCTIONS TO COMPLETE TASK 9:
+================================================================================
+
+Step 1: Navigate to your forked repository
+   $ cd mcino-Introduction-to-Git-and-GitHub
+
+Step 2: Make sure you have fetched the latest branches from remote
+   $ git fetch origin
+   
+   This ensures you have the latest branch information from GitHub.
+
+Step 3: Display all branches with their status
+   $ git branch -a
+
+Step 4: Expected output
+   You should see:
+   - Local branches (without "remotes/")
+   - Remote tracking branches (with "remotes/origin/")
+   - Current branch marked with asterisk (*)
+
+Step 5: Copy the output
+   Select and copy the complete output from the terminal
+   Save it to the github-branches file
+
+================================================================================
+DETAILED EXAMPLE OUTPUT (After completing all previous tasks):
+================================================================================
+
+Command:
+$ git branch -a
+
+Output:
+* main
+  bug-fix-typo
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/bug-fix-typo
+  remotes/origin/main
+
+Explanation of each line:
+-----------------------------------
+
+Line 1: * main
+   - Current branch (marked with *)
+   - Local branch name: main
+   - This is the branch you're currently on
+
+Line 2:   bug-fix-typo
+   - Local branch name: bug-fix-typo
+   - Space before it means it's not the current branch
+   - This branch was created earlier with: git checkout -b bug-fix-typo
+
+Line 3:   remotes/origin/HEAD -> origin/main
+   - Remote pointer to the default branch
+   - Points to origin/main on the GitHub repository
+   - Indicates GitHub's default branch is "main"
+
+Line 4:   remotes/origin/bug-fix-typo
+   - Remote tracking branch
+   - Tracks the bug-fix-typo branch on GitHub (origin)
+   - Shows that your pushed branch exists on remote
+
+Line 5:   remotes/origin/main
+   - Remote tracking branch
+   - Tracks the main branch on GitHub (origin)
+   - Shows that main branch exists on remote
+
+================================================================================
+ALTERNATIVE OUTPUT FORMAT (with -vv flag for more details):
+================================================================================
+
+Command:
+$ git branch -vv
+
+Output:
+* main                    abc1234 [origin/main] Merge bug-fix-typo
+  bug-fix-typo            def5678 [origin/bug-fix-typo] Fix: Correct typo
+
+Explanation:
+- Column 1: Branch name (with * for current)
+- Column 2: Latest commit hash
+- Column 3: Remote tracking status [origin/branch]
+- Column 4: Latest commit message
+
+================================================================================
+ANOTHER ALTERNATIVE OUTPUT (with -v flag):
+================================================================================
+
+Command:
+$ git branch -v
+
+Output:
+* main        abc1234 Merge bug-fix-typo
+  bug-fix-typo def5678 Fix: Correct typo
+
+Explanation:
+- Shows local branches only
+- Includes commit hash and message
+- Current branch marked with *
+
+================================================================================
+OUTPUT VARIATIONS BASED ON YOUR SITUATION:
+================================================================================
+
+Scenario 1: If you haven't created bug-fix-typo branch yet
+   $ git branch -a
+   
+   Output:
+   * main
+     remotes/origin/HEAD -> origin/main
+     remotes/origin/main
+
+Scenario 2: If you have multiple feature branches
+   $ git branch -a
+   
+   Output:
+   * main
+     bug-fix-typo
+     feature/enhancement
+     remotes/origin/HEAD -> origin/main
+     remotes/origin/bug-fix-typo
+     remotes/origin/feature/enhancement
+     remotes/origin/main
+
+Scenario 3: Complete setup (what we expect for this task)
+   $ git branch -a
+   
+   Output:
+   * main
+     bug-fix-typo
+     remotes/origin/HEAD -> origin/main
+     remotes/origin/bug-fix-typo
+     remotes/origin/main
+
+================================================================================
+WHAT git branch -a SHOWS:
+================================================================================
+
+✓ All local branches (without remotes/ prefix)
+✓ All remote tracking branches (with remotes/origin/ prefix)
+✓ Current branch (marked with asterisk *)
+✓ Remote HEAD pointer
+✓ Branch names and their status relative to remote
+
+Difference between options:
+- git branch          = Show only local branches
+- git branch -r       = Show only remote branches
+- git branch -a       = Show all branches (local + remote) ← USE THIS FOR TASK 9
+- git branch -v       = Show branches with commit info
+- git branch -vv      = Show branches with remote tracking info
+
+================================================================================
+STEP-BY-STEP EXECUTION FOR TASK 9:
+================================================================================
+
+1. Open your terminal
+
+2. Navigate to your cloned repository:
+   $ cd mcino-Introduction-to-Git-and-GitHub
+
+3. Fetch latest updates from remote:
+   $ git fetch origin
+
+4. Display all branches:
+   $ git branch -a
+
+5. Copy the entire output (including the command)
+
+6. Create or edit the github-branches file
+
+7. Paste the command and output:
+   $ git branch -a
+   * main
+   bug-fix-typo
+   remotes/origin/HEAD -> origin/main
+   remotes/origin/bug-fix-typo
+   remotes/origin/main
+
+8. Save the file as github-branches
+
+================================================================================
+VERIFICATION CHECKLIST:
+================================================================================
+
+✓ Command shows: git branch -a
+✓ Output includes local branches
+✓ Output includes remote branches (remotes/origin/...)
+✓ Current branch is marked with asterisk (*)
+✓ At least main branch is shown
+✓ At least bug-fix-typo branch is shown
+✓ Remote tracking branches are visible
+✓ Output is saved in github-branches file
+
+================================================================================
+USEFUL ADDITIONAL COMMANDS:
+================================================================================
+
+See branches sorted by last commit date:
+$ git branch -a --sort=-committerdate
+
+See branches with status relative to upstream:
+$ git branch -a --verbose --verbose
+
+See branches in a graphical tree format:
+$ git log --graph --oneline --all --decorate
+
+Show which branches have been merged:
+$ git branch --merged
+
+Show which branches have not been merged:
+$ git branch --no-merged
+
+Show branches and their remote tracking status:
+$ git for-each-ref --format='%(refname:short) <- %(upstream:short)' refs/heads
+
+================================================================================
+TROUBLESHOOTING:
+================================================================================
+
+If you see only "* main":
+   - The bug-fix-typo branch hasn't been created yet
+   - Run: git checkout -b bug-fix-typo
+   - Make changes and commit
+   - Run: git push origin bug-fix-typo
+
+If you see "fatal: not a git repository":
+   - You're not in a Git repository directory
+   - Navigate to your cloned repository folder
+   - Run: cd mcino-Introduction-to-Git-and-GitHub
+
+If remote branches don't show:
+   - Fetch from remote: git fetch origin
+   - Then run: git branch -a
+
+If you see many branches:
+   - This is normal if the original repo has multiple branches
+   - Look for: main and bug-fix-typo
+
+================================================================================
+EXPECTED FINAL OUTPUT FOR THIS PROJECT:
+================================================================================
+
+$ git branch -a
+
+* main
+  bug-fix-typo
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/bug-fix-typo
+  remotes/origin/main
+
+This shows:
+✓ You are currently on the main branch (*)
+✓ Local bug-fix-typo branch exists
+✓ Remote main branch exists
+✓ Remote bug-fix-typo branch exists
+✓ Remote HEAD points to main
+✓ All branches are properly synchronized
+
+================================================================================
+NOTES FOR TASK 9:
+================================================================================
+
+1. The command "git branch -a" displays ALL branches in the repository
+2. Local branches appear without "remotes/" prefix
+3. Remote branches appear with "remotes/origin/" prefix
+4. Current branch is marked with asterisk (*)
+5. You must have already:
+   - Created the bug-fix-typo branch (Task 7)
+   - Pushed the branch to origin (Task 7)
+   - Created a pull request (Task 8)
+6. The output shows the complete branch structure
+7. This verifies all your Git work is properly tracked
+
+================================================================================
+COMPLETION SUMMARY FOR PART 2:
+================================================================================
+
+After completing all 4 tasks in Part 2:
+
+✓ Task 6: forked-repo      - Verified fork with curl
+✓ Task 7: merge_branches   - Showed merge with 1 file changed
+✓ Task 8: bug-fix-revert   - Verified pull request details
+✓ Task 9: github-branches  - Displayed all branches and status
+
+All terminal outputs are saved in their respective files and ready for submission.
+
+================================================================================
